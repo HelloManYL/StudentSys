@@ -4,10 +4,15 @@ import com.qf.model.Student;
 import com.qf.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.soap.SOAPBinding;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author Administrator
@@ -34,6 +39,27 @@ public class StudentController {
         studentService.addStudent(student);
         return "redirect:/student/queryStudent";
     }
+
+    @RequestMapping("/getStudentById/{id}")
+    public String getStudentById(@PathVariable int id, HttpServletRequest request){
+        Student student = studentService.getStudentById(id);
+        request.setAttribute("student",student);
+        return "update";
+
+    }
+
+    @RequestMapping("/updateStudent")
+    public String updateStudent(Student student){
+        studentService.updateStudent(student);
+        return "redirect:/student/queryStudent";
+    }
+
+    @RequestMapping("/deleteStudent/{id}")
+    public String deleteStudent(@PathVariable int id){
+        studentService.deleteStudent(id);
+        return "redirect:/student/queryStudent";
+    }
+
 
 
 }

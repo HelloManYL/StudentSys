@@ -29,4 +29,19 @@ public class StudentServiceImpl implements IStudentService{
     public void addStudent(Student student) {
         studentMapper.insert(student);
     }
+
+    @Override
+    public Student getStudentById(int id) {
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+        studentMapper.updateByPrimaryKey(student);
+    }
+
+    @Override
+    public void deleteStudent(int id) {
+        studentMapper.deleteByPrimaryKey(id);
+    }
 }

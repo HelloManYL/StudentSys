@@ -17,15 +17,20 @@
         <th>编号</th>
         <th>姓名</th>
         <th>年龄</th>
+        <th>操作</th>
     </tr>
     <c:forEach items="${studentList}" var="student">
         <tr>
             <td>${student.id}</td>
             <td>${student.name}</td>
             <td>${student.age}</td>
+            <td>
+                <a href="/student/getStudentById/${student.id}">编辑</a>
+                <a href="/student/deleteStudent/${student.id}">删除</a>
+            </td>
         </tr>
     </c:forEach>
-    <td colspan="3"><a href="/add.jsp">添加</a></td>
+    <td colspan="4"><a href="/add.jsp">添加</a></td>
 </table>
 </body>
 </html>
