@@ -12,6 +12,7 @@
 </head>
 <body>
 <form action="/student/updateStudent" method="post">
+    <input type="hidden" name="id" value="${student.id}">
     name:<input type="text" name="name" value="${student.name}"/><br>
     age:<input type="text" name="age" value="${student.age}"/><br>
     <input type="submit" value="保存"/>
